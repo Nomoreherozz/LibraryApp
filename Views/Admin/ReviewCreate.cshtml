@@ -1,0 +1,72 @@
+﻿@*
+ 
+*@
+@model PE2023test.Models.Review
+  
+@{  
+    Layout = "_Layout2";
+    ViewData["Title"] = "Create new review";  
+}  
+
+<section class ="breadcrumb">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2>Create Review Page.</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="create-review">
+    <div class="container">
+        <div class="row row-balance">
+            <div class="col-lg-12">
+                <div class="title-text">
+                    <h4>Create Review</h4>
+                </div>
+           </div>
+            <div class="col-lg-4 col-md-3 col-sm-3">  
+               <form asp-action="ReviewCreate">  
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>  
+                <div class="form-group">  
+                    <label asp-for="ISSNum" class="label">Create the ISS Number</label>  
+                    <input asp-for="ISSNum" class="form-control input-text" />  
+                    <span asp-validation-for="ISSNum" class="text-danger"></span>  
+                </div>  
+               <div class="form-group">  
+                    <label asp-for="IDBook" class="label"></label>  
+                    <input asp-for="IDBook" class="form-control input-text" />  
+                    <span asp-validation-for="IDBook" class="text-danger"></span>  
+                </div>   
+                <div class="form-group">  
+                    <label asp-for="Review_date" class="label">Create the Review Date</label>  
+                    <input asp-for="Review_date" class="datetime" />  
+                    <span asp-validation-for="Review_date" class="text-danger"></span>  
+                </div>  
+                <div class="form-group">  
+                    <label asp-for="Review_context" class="label">Create the Review Text</label>  
+                    <input asp-for="Review_context" class="form-control input-text" />  
+                    <span asp-validation-for="Review_context" class="text-danger"></span>  
+                </div> 
+                <div class="form-group">  
+                    <label asp-for="Review_star" class="label">Review Star</label>  
+                    <input asp-for="Review_star" class="form-control input-text" />  
+                    <span asp-validation-for="Review_star" class="text-danger"></span>  
+                </div> 
+                <div class="form-group">  
+                    <input type="submit" value="ReviewCreate" class="btn" />  
+                </div>  
+            </form>  
+           </div>  
+       </div>
+    </div>
+    <div class="row link-row">
+        <div class="col-lg-4">
+           <a asp-action="ReviewIndex" class="navigate-link">Back to List</a>    
+        </div>
+    </div>
+</section>  
+@section Scripts {  
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}  
+}

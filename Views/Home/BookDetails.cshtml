@@ -1,0 +1,96 @@
+﻿@*
+    
+*@
+@{
+    Layout = @ViewBag.Layout;
+    ViewData["Title"] = "Details";  
+}
+@model PE2023test.Models.ViewBook 
+
+<section class ="breadcrumb">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2>Book Details Page.</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="book-details">
+    <div class = "container">
+        <div class="row row-balance">
+            <div class="col-lg-12">
+                <div class="title-text">
+                    <h4>Books Details</h4>
+                </div>
+           </div>
+        </div>
+        <div class="row">
+            <div class ="col-lg-9 col-md-6 col-sm-6">
+                <dl class="dl-horizontal">
+                     <dt>  
+                        @Html.DisplayNameFor(model => model.Book.Title)  
+                    </dt>  
+                    <dd>  
+                        @Html.DisplayFor(model => model.Book.Title)  
+                    </dd>  
+                    <dt>  
+                        @Html.DisplayNameFor(model => model.Category)  
+                    </dt>  
+                    <dd>  
+                        @Html.DisplayFor(model => model.Category.Category_name)  
+                    </dd>  
+                    <dt>  
+                        @Html.DisplayNameFor(model => model.Book.Publication_Year)  
+                    </dt>  
+                    <dd>  
+                        @Html.DisplayFor(model => model.Book.Publication_Year)  
+                    </dd> 
+                    <dt>  
+                        @Html.DisplayNameFor(model => model.Authors)  
+                        </dt> 
+                @foreach (var aut in Model.Authors)
+                {
+                    <dd>  
+                        @Html.DisplayFor(ModelItem => aut.Author_fname)
+                    </dd>  
+                }
+                <dt>  
+                    @Html.DisplayNameFor(model => model.Review)  
+                </dt> 
+                @foreach (var rev in Model.Review)
+                {
+                    <dd>  
+                        @Html.DisplayFor(ModelItem => rev.Review_date)
+                        @Html.DisplayFor(ModelItem => rev.Review_context)
+                        @for(int i=0; i<rev.Review_star;i++)
+                        {
+                            <span class="fa-solid fa-star"></span>
+                         }
+                    </dd>  
+                }
+                </dl>
+            </div>
+            <div class="col-lg-3 col col-md-6 col-sm-6 ms-auto">
+                <div class="product-item">
+                    <div class="product_pic set-bg" style="background-image:url(@Model.add_img_Book);height:400px">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row link-row" style="margin-top:30px">
+        <div class="col-lg-4">
+            <a asp-action="BookIndex" class="navigate-link">Back to List</a>  
+        </div>
+        <div class="col-lg-4">
+            <a asp-action="LeaseCreate" asp-route-book_ID="@Model.Book.ID" class="navigate-link">Rent This Book</a>  
+        </div>
+    </div>
+</section>
+
+<div>
+    
+    
+</div>

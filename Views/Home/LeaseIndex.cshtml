@@ -1,0 +1,78 @@
+﻿@model IEnumerable<PE2023test.Models.Lease>  
+     
+@{  
+    Layout = @ViewBag.Layout;
+        ViewData["Title"] = "Thư viện của những chú bé";  
+    }  
+
+
+<section class ="breadcrumb">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2>Lease Index Page.</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="table-section">
+    <div class="container">
+        <div class="row row-balance">
+            <div class="col-lg-12">
+                <div class="title-text">
+                    <h4>Check the details here!</h4>
+                </div>
+           </div>
+        </div>
+        <table class="table table-responsive">  
+            <thead>  
+                <tr>  
+                    <th scope="col">  
+                        @Html.DisplayNameFor(model => model.SessionID)  
+                    </th>  
+                    <th>  
+                        @Html.DisplayNameFor(model => model.Name_Book)  
+                    </th scope="col">  
+                    <th>  
+                        @Html.DisplayNameFor(model => model.ISSN)  
+                    </th>  
+                    <th scope="col" class="res-column">  
+                        @Html.DisplayNameFor(model => model.Lease_date)  
+                    </th>  
+                    <th scope="col" class="res-column">  
+                        @Html.DisplayNameFor(model => model.Expiry_date)  
+                    </th>  
+                    <th scope="col">
+                        Details
+                    </th>
+                </tr>  
+            </thead>  
+            <tbody>  
+                @foreach (var item in Model)  
+                {  
+                    <tr>  
+                        <td>  
+                        @Html.DisplayFor(modelItem => item.SessionID)  
+                        </td>  
+                        <td>  
+                            @Html.DisplayFor(model => item.Name_Book)  
+                        </td>  
+                        <td>  
+                            @Html.DisplayFor(model => item.ISSN)  
+                        </td>  
+                        <td class="res-column">  
+                            @Html.DisplayFor(model => item.Lease_date)  
+                        </td>  
+                        <td class="res-column">  
+                            @Html.DisplayFor(model => item.Expiry_date)  
+                        </td>  
+                        <td>  
+                            |<a asp-action="LeaseDetails" asp-route-id="@item.SessionID">Details</a>|
+                        </td>  
+                    </tr>  
+                }  
+            </tbody>  
+        </table>
+    </div>
+</section>

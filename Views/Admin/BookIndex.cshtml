@@ -1,0 +1,89 @@
+﻿@model IEnumerable<PE2023test.Models.Book>  
+     
+@{  
+        ViewData["Title"] = "Thư viện của những chú bé";  
+    }  
+
+@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<section class ="breadcrumb">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2>Admin Index Page.</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="table-section">
+    <div class="container">
+        <div class="row row-balance">
+            <div class="col-lg-12">
+                <div class="title-text">
+                    <h4>Check the details here!</h4>
+                </div>
+           </div>
+        </div>
+        <table class="table table-responsive">  
+            <thead>  
+                <tr>  
+                    <th scope="col">  
+                        @Html.DisplayNameFor(model => model.ID)  
+                    </th>  
+                    <th>  
+                        @Html.DisplayNameFor(model => model.Title)  
+                    </th scope="col">  
+                    <th>  
+                        @Html.DisplayNameFor(model => model.Category_ID)  
+                    </th>  
+                    <th scope="col" class="res-column">  
+                        @Html.DisplayNameFor(model => model.Publication_Year)  
+                    </th>  
+                    <th scope="col" class="res-column">  
+                        @Html.DisplayNameFor(model => model.Quantity)  
+                    </th>  
+                    <th scope="col">
+                        Details
+                    </th>
+                </tr>  
+            </thead>  
+            <tbody>  
+                @foreach (var item in Model)  
+                {  
+                    <tr>  
+                        <td>  
+                        @Html.DisplayFor(modelItem => item.ID)  
+                        </td>  
+                        <td>  
+                            @Html.DisplayFor(model => item.Title)  
+                        </td>  
+                        <td>  
+                            @Html.DisplayFor(model => item.Category_ID)  
+                        </td>  
+                        <td class="res-column">  
+                            @Html.DisplayFor(model => item.Publication_Year)  
+                        </td>  
+                        <td class="res-column">  
+                            @Html.DisplayFor(model => item.Quantity)  
+                        </td>  
+                        <td>  
+                            <a asp-action="BookEdit" asp-route-id="@item.ID">Edit</a> |  
+                            <a asp-action="BookDetails" asp-route-id="@item.ID">Details</a> |  
+                            <a asp-action="BookDelete" asp-route-id="@item.ID">Delete</a>  
+                        </td>  
+                    </tr>  
+                }  
+            </tbody>  
+        </table>
+        <div class="row" style="text-align:center;padding-bottom:20px;margin-top:20px">
+            <div class="col-lg-12">
+                <a asp-action="BookCreate" class="navigate-link">To create a book</a>  
+
+            </div>
+        </div>
+    </div>
+</section>
+

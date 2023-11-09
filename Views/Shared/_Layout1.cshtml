@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - PE2023test</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/PE2023test.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/books.css" type="text/css" />
+</head>
+<body>
+  <div class="bg">
+     <header>
+         <nav class="navbar navbar-expand-lg px-2 navbar-dark">
+              <div class="container-fluid">
+                <a class="navbar-brand" asp-action="LogoTeam"><img src="/css/img/logo_nhom.png" width="50" height="50" alt=""></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" asp-action="BookIndex">Homepage</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" asp-action="Filter">Advanced Search</a>
+                    </li>
+                  </ul>
+
+                 <div class ="music me-auto">
+                     <button class="btn" onclick="playBgMusic()">
+                          <i class ="fa-solid fa-play fa-lg"></i>
+                     </button>
+                     <button class="btn" onclick="pauseBgMusic()">
+                          <i class ="fa-solid fa-pause fa-lg"></i>
+                     </button> 
+                    <iframe src="/audio/silence.mp3" allow="autoplay" id="audio"></iframe>
+                    <audio id="bg_music" src="/audio/silence.mp3" autoplay loop></audio>
+                 </div>
+
+                  <form class="navbar-form form-inline" asp-action="Searchtest">
+                     <div class="input-group search-box">
+                                @using (Html.BeginForm("Searchtest", "Home", FormMethod.Post))
+                                {
+                                     @Html.TextBox("Search","",new { @class= "form-control",placeholder="Search"})
+                                     <span class = "input-group-btn">
+                                         <button type="submit" class="btn">
+                                            <i class ="fa fa-search"></i>
+                                         </button>
+                                     </span>
+                                }
+                            </div>
+                        }
+                 </form>
+
+                 <div class="navbar-nav ms-auto">
+                     <div class="nav-item dropdown">
+                        <a href="#" data-bs-toggle="dropdown" class="nav-link dropdown-toggle" aria-expanded="false">
+                            <i class="fa-solid fa-user"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" asp-action="LeaseIndex">Contracts</a></li>
+                        <li><a class="dropdown-item" asp-action="UserDetails">Profile</a></li>
+                        <li><a class="dropdown-item" asp-action="Logout">Logout</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" asp-controller="Admin" asp-action="Check">ADMIN?</a></li>
+                      </ul>
+                     </div>              
+                 </div>
+                </div>
+              </div>
+      </nav>
+     </header>
+    <div class="container">
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+  </div>
+
+    <footer class="text-center text-lg-start">
+      <div class="container p-4">
+        <div class="row">
+          <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+            <h5 class="text-uppercase">Inspring Quote</h5>
+            <p>
+             "Có làm thì mới có ăn. Không làm mà đòi có ăn thì ăn *** ăn đầu ****." - Huấn Rose
+            </p>
+            </p>
+          </div>
+          <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+            <h5 class="text-uppercase">Có thể bạn chưa biết?</h5>
+            <p>
+              "Ja mé uống nước" thật ra không khát nước!
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+
+
+
+
+
+    <!--<footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2022 - PE2023test - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>-->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/9bc94d0d27.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script type="text/javascript" src="~/js/books.js"></script>
+    <script type="text/javascript" src="~/js/validate.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+

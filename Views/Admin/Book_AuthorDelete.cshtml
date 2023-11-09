@@ -1,0 +1,60 @@
+﻿@*
+    
+*@
+@model PE2023test.Models.ViewBook_Author
+
+@{  
+    Layout = "_Layout2";
+    ViewData["Title"] = "Delete";  
+}  
+
+<section class ="breadcrumb">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2>Author Delete Page.</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="delete-authorbook">
+    <div class = "container">
+        <div class="row row-balance">
+            <div class="col-lg-12">
+                <div class="title-text">
+                    <h4>Delete Book Title and Author Name</h4>
+                    <h5>Are you sure you want to delete the author and book below?</h5>
+                </div>
+           </div>
+        </div>
+        <div class="row">
+            <dl class="dl-horizontal">
+                <dt>  
+                    @Html.DisplayNameFor(model => model.Book_Title)  
+                </dt>  
+                <dd>  
+                    @Html.DisplayFor(model => model.Book_Title)  
+                </dd>  
+                <dt>  
+                    @Html.DisplayNameFor(model => model.Author_Name)  
+                </dt>  
+                <dd>  
+                    @Html.DisplayFor(model => model.Author_Name)  
+                </dd>          
+            </dl>  
+        </div>
+    </div>
+    <div class="row">
+        <form asp-action="Book_AuthorDelete" asp-route-id="@Model.Book_Authors.BookID" asp-route-id2="@Model.Book_Authors.AuthorID">
+            <input type="hidden" asp-for="Book_Authors" />
+            <input type="submit" value="Delete" class="btn" /> 
+        </form>
+    </div>
+    <div class="row link-row" style="margin-top:20px">
+        <div class="col-lg-12">
+            <a asp-action="Book_AuthorIndex" class="navigate-link">Back to List</a>
+        </div>
+    </div>
+</section>
+

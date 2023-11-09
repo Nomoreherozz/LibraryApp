@@ -1,0 +1,73 @@
+﻿@*
+    
+*@
+@model PE2023test.Models.Book 
+
+@{  
+    Layout = "_Layout2";
+    ViewData["Title"] = "Delete";  
+}  
+
+<section class ="breadcrumb">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2>Books Delete Page.</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="book-delete">
+    <div class = "container">
+        <div class="row row-balance">
+            <div class="col-lg-12">
+                <div class="title-text">
+                    <h4>Delete Books</h4>
+                    <h5>Are you sure you want to delete the book below?</h5>
+                </div>
+           </div>
+        </div>
+        <div class="row">
+            <dl class="dl-horizontal">
+                <dt>  
+                    @Html.DisplayNameFor(model => model.Title)  
+                </dt>  
+                <dd>  
+                    @Html.DisplayFor(model => model.Title)  
+                </dd>  
+                <dt>  
+                    @Html.DisplayNameFor(model => model.Category_ID)  
+                </dt>  
+                <dd>  
+                    @Html.DisplayFor(model => model.Category_ID)  
+                </dd>  
+                <dt>  
+                    @Html.DisplayNameFor(model => model.Publication_Year)  
+                </dt>  
+                <dd>  
+                    @Html.DisplayFor(model => model.Publication_Year)  
+                </dd>  
+                <dt>  
+                    @Html.DisplayNameFor(model => model.Quantity)  
+                </dt>  
+                <dd>  
+                    @Html.DisplayFor(model => model.Quantity)
+                </dd>      
+            </dl>  
+        </div>
+    </div>
+    <div class="row">
+        <form asp-action="BookDelete">
+            <input type="hidden" asp-for="ID" />  
+            <input type="submit" value="Book Delete" class="btn" />  
+        </form>
+    </div>
+    <div class="row link-row" style="margin-top:20px">
+        <div class="col-lg-12">
+            <a asp-action="BookIndex" class="navigate-link">Back to List</a>  
+        </div>
+    </div>
+</section>
+
+

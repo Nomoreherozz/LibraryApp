@@ -1,0 +1,67 @@
+﻿@*
+ 
+*@
+@model PE2023test.Models.Lease
+  
+@{  
+    Layout = "_Layout2";
+    ViewData["Title"] = "Create new lease";  
+}  
+<section class ="breadcrumb">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2>Lease Details Page.</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="create-lease">
+    <div class="container">
+        <div class="row row-balance">
+            <div class="col-lg-12">
+                <div class="title-text">
+                    <h4>Lease Create</h4>
+                </div>
+           </div>
+            <div class="col-lg-4 col-md-3 col-sm-3">  
+                <form asp-action="LeaseCreate">  
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>  
+                    <div class="form-group">  
+                        <label asp-for="SessionID" class="label">Create Session ID</label>  
+                        <input asp-for="SessionID" class="form-control input-text" />  
+                        <span asp-validation-for="SessionID" class="text-danger"></span>  
+                    </div>  
+                   <div class="form-group">  
+                        <label asp-for="Book_ID" class="label">Create Book ID</label>  
+                        <input asp-for="Book_ID" class="form-control input-text" />  
+                        <span asp-validation-for="Book_ID" class="text-danger"></span>  
+                    </div>   
+                    <div class="form-group">  
+                        <label asp-for="ISSN" class="label">Create the ISSN</label>  
+                        <input asp-for="ISSN" class="form-control input-text" />  
+                        <span asp-validation-for="ISSN" class="text-danger"></span>  
+                    </div>  
+                    <div class="form-group">  
+                        <label asp-for="Lease_date" class="label">Create the Lease Date</label>  
+                        <input asp-for="Lease_date" class="datetime" />  
+                        <span asp-validation-for="Lease_date" class="text-danger"></span>  
+                    </div> 
+                    <div class="form-group">  
+                        <input type="submit" value="Create Lease" class="btn" />  
+                    </div>  
+              </form>  
+           </div>  
+       </div>
+    </div>
+    <div class="row link-row">
+        <div class="col-lg-4">
+           <a asp-action="LeaseIndex" class="navigate-link">Back to List</a>    
+        </div>
+    </div>
+</section>
+
+@section Scripts {  
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}  
+}

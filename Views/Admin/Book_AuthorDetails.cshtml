@@ -1,0 +1,64 @@
+﻿@*
+    
+*@
+@{
+    Layout = "_Layout2";
+    ViewData["Title"] = "Details";  
+}
+
+@model PE2023test.Models.ViewBook
+
+<section class ="breadcrumb">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2>Author Details Page.</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="author-details">
+    <div class = "container">
+        <div class="row row-balance">
+            <div class="col-lg-12">
+                <div class="title-text">
+                    <h4>Author Details</h4>
+                </div>
+           </div>
+        </div>
+        <div class="row">
+            <dl class="dl-horizontal">
+                  <dt>  
+                    @Html.DisplayNameFor(model => model.Book.ID)  
+                </dt>  
+                <dd>  
+                    @Html.DisplayFor(model => model.Book.ID)  
+                </dd>  
+                <dt>  
+                    @Html.DisplayNameFor(model => model.Book.Title)  
+                </dt>  
+                <dd>  
+                    @Html.DisplayFor(model => model.Book.Title)  
+                </dd>  
+                <dt>  
+                    @Html.DisplayNameFor(model => model.Authors)  
+                </dt>  
+                <dd>  
+                    @foreach (Author author in Model.Authors)  
+                    {
+             
+                            @Html.DisplayFor(modelItem => author.Author_fname)  
+                            <a asp-action="Book_AuthorDelete" asp-route-id="@Model.Book.ID" asp-route-id2="@author.Author_ID" class="navigate-link">Delete</a>
+                    }
+                </dd>
+            </dl>  
+        </div>
+    </div>
+    <div class="row link-row">
+        <div class="col-lg-4">
+               <a asp-action="Book_AuthorIndex" class="navigate-link">Back to List</a>  
+        </div>
+    </div>
+</section>
+    

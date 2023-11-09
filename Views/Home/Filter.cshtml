@@ -1,0 +1,81 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model PE2023test.Models.Filter
+@{
+    Layout = @ViewBag.Layout;
+    ViewData["Title"] = "Catogories of the Books";  
+}
+
+<section class ="breadcrumb">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2>Searching Page.</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="categories-menu">
+    <div class="container">
+        <div class="row row-balance">
+            <div class="col-lg-12">
+                <div class="title-text">
+                    <h4>List Of Categories</h4>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <select name="select_box_cat" class="form-select" id="select_box_cat">
+                    <option value="" selected>Search For Categories</option>
+                    @foreach(var item in Model.Category)
+                    {
+                    <option value="@item.Category_name">@item.Category_name</option>
+                    }
+                </select>
+            </div>            
+        </div>
+        <div class="row row-balance">
+            <div class="col-lg-12">
+                <div class="title-text">
+                    <h4>List Of Authors</h4>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <select name="select_box_author" class="form-select" id="select_box_author">
+                    <option value="" selected>Search For Author</option>
+                    @foreach(var item in Model.Authors)
+                    {
+                    <option value="@item.Author_fname">@item.Author_fname</option>
+                    }
+                </select>
+            </div>            
+        </div>
+        <div class="row row-balance">
+            <div class="col-lg-12">
+                <div class="title-text">
+                    <h4>Years Of Publication</h4>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <select name="select_box_pubyear" class="form-select" id="select_box_pubyear">
+                    <option value="" selected>Search For Publication</option>
+                    @foreach(var item in Model.Publication)
+                    {
+                    <option value="@item">@item</option>
+                    }
+                </select>
+            </div>
+            <div class="col-lg-12">
+                <div class="submit-category-button">
+                    <button class="btn" type="submit" id="submit__button">Search</button>
+                    <p id="demo" style="display:none"></p> 
+                </div>
+            </div>
+            <div class="row">
+                 <div id="content_body" class="col-lg-12 mt-2">
+                 </div>
+            </div>
+        </div>
+    </div>
+</section>

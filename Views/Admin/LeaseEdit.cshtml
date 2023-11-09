@@ -1,0 +1,74 @@
+﻿@*
+    //Nâng cấp đx k?
+*@
+@model PE2023test.Models.Lease
+
+@{  
+    Layout = "_Layout2";
+    ViewData["Title"] = "Edit";  
+}
+
+<section class ="breadcrumb">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2>Lease Edit Page.</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="lease-edit">
+    <div class="container">
+        <div class="row row-balance">
+            <div class="col-lg-12">
+                <div class="title-text">
+                    <h4>Lease Edit</h4>
+                </div>
+           </div>
+            <div class="col-lg-4 col-md-3 col-sm-3">  
+               <form asp-action="LeaseEdit">  
+                   <div asp-validation-summary="ModelOnly" class="text-danger"></div>  
+                        <input type="hidden" asp-for="SessionID" />  
+                        <div class="form-group">  
+                            <label asp-for="Book_ID" class="label">Edit the Book ID</label>  
+                            <input asp-for="Book_ID" class="form-control input-text" />  
+                            <span asp-validation-for="Book_ID" class="text-danger"></span>  
+                        </div>  
+                        <div class="form-group">  
+                            <label asp-for="ISSN" class="label">Edit the ISSN</label>  
+                            <input asp-for="ISSN" class="form-control input-text" />  
+                            <span asp-validation-for="ISSN" class="text-danger"></span>  
+                        </div>  
+                        <div class="form-group">  
+                            <label asp-for="Lease_date" class="label">Edit the lease date:</label>  
+                            <input asp-for="Lease_date" class="datetime" />  
+                            <span asp-validation-for="Lease_date" class="text-danger"></span>  
+                        </div>  
+                        <div class="form-group">  
+                            <label asp-for="Expiry_date" class="label">Edit the expiry date:</label>  
+                            <input asp-for="Expiry_date" class="datetime" />  
+                            <span asp-validation-for="Expiry_date" class="text-danger"></span>  
+                        </div>   
+                        <div class="form-group">  
+                            <label asp-for="Status" class="label">Edit the status:</label>  
+                            <input asp-for="Status" class="form-control input-text" />  
+                            <span asp-validation-for="Status" class="text-danger"></span>  
+                        </div>  
+                        <div class="form-group">  
+                            <input type="submit" value="Save" class="btn" />  
+                        </div>  
+                </form>  
+            </div>  
+       </div>
+        <div class="row link-row">
+            <div class="col-lg-12">
+              <a asp-action="LeaseIndex" class="navigate-link">Back to List</a>  
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {  
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}  
+}

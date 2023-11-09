@@ -1,0 +1,31 @@
+version: '3.8'
+ 
+services:
+   
+  application:
+    image: vgu.pe.2023.application:latest
+    container_name: "vgu.pe.2023.application"
+    ports:  
+      - "7124:7124"
+      - "5124:5124"
+    environment:
+      - DATABASE_HOST=vgu.pe.2023.database
+      - DATABASE_PORT=9027
+      - DATABASE_USER=root
+      - DATABASE_PASSWORD=123456789
+      - DATABASE_NAME=pe2023
+
+    command: ["dotnet", "./bin/Debug/net6.0/PE2023test.dll"]
+
+  database: 
+    image: "mysql"
+    container_name: "vgu.pe.2023.database"
+    ports:
+      - "9027:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=Kaka12345
+    volumes: 
+      - "./DB/DB_init.sql:/docker-entrypoint-initdb.d/1.sql"
+    
+
+

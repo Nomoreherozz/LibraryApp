@@ -1,0 +1,81 @@
+﻿@*
+ 
+*@
+@model PE2023test.Models.User
+  
+@{  
+    ViewData["Title"] = "Register";  
+}  
+
+<section class ="breadcrumb">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2>Register Page.</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="register">
+    <div class="container">
+        <div class="row row-balance">
+            <div class="col-lg-12">
+                <div class="title-text">
+                    <h4>Register</h4>
+                </div>
+           </div>
+            <div class="col-lg-4 col-md-3 col-sm-3">  
+               <form asp-action="Register" class="needs-validation" novalidate>  
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>  
+                <div class="form-group">  
+                    <label asp-for="ISSN" class="label">Enter the ISSN</label>  
+                    <input asp-for="ISSN" class="form-control" min="0" type="number" required/>  
+                    <span asp-validation-for="ISSN" class="text-danger"></span>  
+                </div>  
+               <div class="form-group">  
+                    <label asp-for="Name" class="label">Enter the Name</label>  
+                    <input asp-for="Name" class="form-control" required/>  
+                    <span asp-validation-for="Name" class="text-danger"></span>  
+                </div>   
+                <div class="form-group">  
+                    <label asp-for="Email" class="label">Enter the Email</label>  
+                    <input asp-for="Email" class="form-control" required/>  
+                    <span asp-validation-for="Email" class="text-danger"></span>  
+                </div>  
+                <div class="form-group">  
+                    <label asp-for="Address" class="label">Enter the Address</label>  
+                    <input asp-for="Address" class="form-control" required/>  
+                    <span asp-validation-for="Address" class="text-danger"></span>  
+                </div>  
+                <div class="form-group">  
+                    <label asp-for="Phone" class="label">Enter the Phone Number</label>  
+                    <input asp-for="Phone" class="form-control" required/>  
+                    <span asp-validation-for="Phone" class="text-danger"></span>  
+                </div>  
+                <div class="form-group">  
+                    <label asp-for="Pass" class="label">Enter the Password</label>  
+                    <input asp-for="Pass" class="form-control" required/>  
+                    <span asp-validation-for="Pass" class="text-danger"></span>  
+                </div>
+                <div class="form-check" style="margin-bottom:10px">
+                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                    <label class="form-check-label" for="invalidCheck">
+                         Agree to terms and conditions
+                    </label>
+                    <div class="invalid-feedback">
+                        You must agree before submitting.
+                    </div>
+                </div>
+                <div class="form-group">  
+                    <button type="submit" class="btn">Create</button>
+                </div>  
+            </form>  
+           </div>  
+       </div>
+    </div>
+</section>
+
+@section Scripts {  
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}  
+}

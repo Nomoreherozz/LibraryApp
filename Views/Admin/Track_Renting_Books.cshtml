@@ -1,0 +1,90 @@
+﻿@*
+    
+*@
+@{
+    Layout = "_Layout2";
+    ViewData["Title"] = "Track renting books";  
+}
+
+@model IEnumerable<PE2023test.Models.ViewBook>  
+<section class ="breadcrumb">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2>Track Renting Books Page.</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="table-section">
+    <div class="container">
+        <div class="row row-balance">
+            <div class="col-lg-12">
+                <div class="title-text">
+                    <h4>Track Renting Books Report</h4>
+                </div>
+           </div>
+           <div class="col-lg-3 col-md-4 col-sm-6">
+               <input type="text" id="filter-title" onkeyup="filterTitle()" placeholder="Filter by Title">
+           </div>
+        </div>
+        <table class="table table-responsive" id="track-table" style="margin-top:30px;border-top:1px solid white">  
+            <thead>  
+                <tr>  
+                    <th scope="col">  
+                        @Html.DisplayNameFor(model => model.Book.Title)  
+                    </th>  
+                    <th>  
+                        @Html.DisplayNameFor(model => model.Book.Category_ID)  
+                    </th scope="col">  
+                    <th>  
+                        @Html.DisplayNameFor(model => model.Book.Publication_Year)  
+                    </th>  
+                    <th scope="col" class="res-column">  
+                        @Html.DisplayNameFor(model => model.Book.Quantity)  
+                    </th>  
+                    <th scope="col" class="res-column">  
+                        @Html.DisplayNameFor(model => model.available)  
+                    </th>  
+                    <th scope="col">
+                        Details
+                    </th>
+                </tr>  
+            </thead>  
+            <tbody>  
+                @foreach (var item in Model)  
+                {  
+                    <tr>  
+                        <td>  
+                            @Html.DisplayFor(modelItem => item.Book.Title)  
+                        </td>  
+                        <td>  
+                            @Html.DisplayFor(model => item.Book.Category_ID)  
+                        </td>  
+                        <td>  
+                            @Html.DisplayFor(model => item.Book.Publication_Year)  
+                        </td>  
+                        <td class="res-column">  
+                            @Html.DisplayFor(model => item.Book.Quantity)  
+                        </td>  
+                        <td class="res-column">  
+                            @Html.DisplayFor(model => item.available)  
+                        </td>  
+                        <td>  
+                            <a asp-action="Track_Renting_Book" asp-route-id_book="@item.Book.ID">List leases for this book</a>
+                        </td>  
+                    </tr>  
+                }  
+            </tbody>  
+        </table>
+    </div>
+    <div class="row link-row">
+        <div class="col-lg-4">
+            <a asp-action="Send_Mail_Manually" asp-controller="Admin" class="btn btn-outline-warning">Send email to announce customers</a>
+        </div>
+    </div>
+</section>
+
+
+   

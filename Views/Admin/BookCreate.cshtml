@@ -1,0 +1,74 @@
+﻿@*
+ 
+*@
+@model PE2023test.Models.Book 
+  
+@{  
+    Layout = "_Layout2";
+    ViewData["Title"] = "Create new book";  
+}  
+
+<section class ="breadcrumb">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2>Books Create Page.</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="book-create">
+    <div class="container">
+        <div class="row row-balance">
+            <div class="col-lg-12">
+                <div class="title-text">
+                    <h4>Books Edit</h4>
+                </div>
+           </div>
+             <form asp-action="BookCreate">  
+                <div class="col-lg-4 col-md-3 col-sm-3">  
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>  
+                    <div class="form-group">  
+                        <label asp-for="ID" class="label">Please input ID of the book:</label>  
+                        <input asp-for="ID" class="form-control input-text" />  
+                        <span asp-validation-for="ID" class="text-danger"></span>  
+                    </div>  
+               <div class="form-group">  
+                        <label asp-for="Title" class="label">Please input title of the book:</label>  
+                        <input asp-for="Title" class="form-control input-text" />  
+                        <span asp-validation-for="Title" class="text-danger"></span>  
+                </div>   
+                <div class="form-group">  
+                        <label asp-for="Category_ID" class="label">Please input Category ID of the book:</label>  
+                        <input asp-for="Category_ID" class="form-control input-text" />  
+                        <span asp-validation-for="Category_ID" class="text-danger"></span>  
+                </div>  
+                <div class="form-group">  
+                        <label asp-for="Publication_Year" class="label">Please input publication year of the book:</label>  
+                        <input asp-for="Publication_Year" class="form-control input-text" />  
+                        <span asp-validation-for="Publication_Year" class="text-danger"></span>  
+                </div>  
+                <div class="form-group">  
+                        <label asp-for="Quantity" class="label">Please input quantity of the book:</label>  
+                        <input asp-for="Quantity" class="form-control input-text" />  
+                        <span asp-validation-for="Quantity" class="text-danger"></span>  
+                </div>  
+                 <div class="form-group">  
+                         <input type="submit" value="BookCreate" class="btn btn-default"/>  
+                 </div>
+                </div>  
+             </form>
+       </div>
+        <div class="row link-row">
+            <div class="col-lg-12">
+              <a asp-action="BookIndex" class="navigate-link">Back to List</a>  
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@section Scripts {  
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}  
+}

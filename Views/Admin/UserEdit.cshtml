@@ -1,0 +1,73 @@
+﻿@*
+    //Nâng cấp đx k?
+*@
+@model PE2023test.Models.User
+
+@{  
+    Layout = "_Layout2";
+    ViewData["Title"] = "Edit";  
+}  
+<section class ="breadcrumb">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2>Edit User Page.</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="edit-author">
+    <div class="container">
+        <div class="row row-balance">
+            <div class="col-lg-12">
+                <div class="title-text">
+                    <h4>Edit User</h4>
+                </div>
+           </div>
+            <div class="col-lg-4 col-md-3 col-sm-3">  
+                <form asp-action="UserEdit">  
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>  
+                    <input type="hidden" asp-for="ISSN" />  
+                    <div class="form-group">  
+                        <label asp-for="Name" class="label">Edit User Name</label>  
+                        <input asp-for="Name" class="form-control input-text" />  
+                        <span asp-validation-for="Name" class="text-danger"></span>  
+                    </div>  
+                    <div class="form-group">  
+                        <label asp-for="Email" class="label">Edit User Email</label>  
+                        <input asp-for="Email" class="form-control input-text" />  
+                        <span asp-validation-for="Email" class="text-danger"></span>  
+                    </div>  
+                    <div class="form-group">  
+                        <label asp-for="Address" class="label">Edit User Address</label>  
+                        <input asp-for="Address" class="form-control input-text" />  
+                        <span asp-validation-for="Address" class="text-danger"></span>  
+                    </div>  
+                    <div class="form-group">  
+                        <label asp-for="Phone" class="label">Edit User Phone</label>  
+                        <input asp-for="Phone" class="form-control input-text" />  
+                        <span asp-validation-for="Phone" class="text-danger"></span>  
+                    </div>    
+                    <div class="form-group">  
+                        <label asp-for="Pass" class="label">Edit User Password</label>  
+                        <input asp-for="Pass" class="form-control input-text" />  
+                        <span asp-validation-for="Pass" class="text-danger"></span>  
+                    </div>  
+                    <div class="form-group">  
+                        <input type="submit" value="Save" class="btn" />  
+                    </div>  
+                </form>  
+           </div>  
+       </div>
+    </div>
+    <div class="row link-row">
+        <div class="col-lg-4">
+           <a asp-action="UserIndex" class="navigate-link">Back to List</a>    
+        </div>
+    </div>
+</section>  
+
+@section Scripts {  
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}  
+}
